@@ -17,6 +17,8 @@
  */
 package test;
 
+import Brick.Brick;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;

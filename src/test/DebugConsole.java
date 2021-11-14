@@ -22,7 +22,7 @@ import java.awt.*;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
-public class DebugConsole extends JDialog implements WindowListener{
+public class  DebugConsole extends JDialog implements WindowListener{
 
     private static final String TITLE = "Debug Console";
 

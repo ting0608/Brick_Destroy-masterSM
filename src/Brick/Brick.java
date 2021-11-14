@@ -1,4 +1,6 @@
-package test;
+package Brick;
+
+import test.*;
 
 import java.awt.*;
 import java.awt.Point;
