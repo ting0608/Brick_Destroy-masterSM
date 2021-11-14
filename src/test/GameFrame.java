@@ -17,6 +17,9 @@
  */
 package test;
 
+import Ui.GameBoard;
+import Ui.HomeMenu;
+
 import javax.swing.*;
 import java.awt.*;
 
