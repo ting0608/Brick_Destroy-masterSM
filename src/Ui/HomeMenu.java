@@ -270,12 +270,12 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
         Point p = mouseEvent.getPoint();
         if(startButton.contains(p)){
             startClicked = true;
-            repaint(startButton.x,startButton.y,startButton.width+1,startButton.height+1);
+            RepaintStart();
 
         }
         else if(menuButton.contains(p)){
             menuClicked = true;
-            repaint(menuButton.x,menuButton.y,menuButton.width+1,menuButton.height+1);
+            RepaintMenu();
         }
     }
 
@@ -283,14 +283,15 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
     public void mouseReleased(MouseEvent mouseEvent) {
         if(startClicked ){
             startClicked = false;
-            repaint(startButton.x,startButton.y,startButton.width+1,startButton.height+1);
+            RepaintStart();
         }
         else if(menuClicked){
             menuClicked = false;
-            repaint(menuButton.x,menuButton.y,menuButton.width+1,menuButton.height+1);
+            RepaintMenu();
         }
     }
 
+    //these are required for mouse listener
     @Override
     public void mouseEntered(MouseEvent mouseEvent) {
 
@@ -314,6 +315,16 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
             this.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         else
             this.setCursor(Cursor.getDefaultCursor());
+
+    }
+    //make 2 separate methods to avoid repeating same method in mouse_pressed/mouse_released, and also allow user to modify easily(once)
+    public void RepaintStart(){
+        repaint(startButton.x,startButton.y,startButton.width+1,startButton.height+1);
+
+    }
+
+    public void RepaintMenu(){
+        repaint(menuButton.x,menuButton.y,menuButton.width+1,menuButton.height+1);
 
     }
 }
