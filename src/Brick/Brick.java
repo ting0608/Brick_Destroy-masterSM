@@ -105,6 +105,7 @@ abstract public class Brick  {
             }
         }
 
+
         protected void makeCrack(Point start, Point end){
 
             GeneralPath path = new GeneralPath();
@@ -189,17 +190,18 @@ abstract public class Brick  {
 
     private boolean broken;
 
-
-    public Brick(String name, Point pos,Dimension size,Color border,Color inner,int strength){
+    //here is brick() with separate constructors
+    public Brick(String name, Point pos, Dimension size, Color border,Color inner,  int strength){
         rnd = new Random();
         broken = false;
         this.name = name;
-        brickFace = makeBrickFace(pos,size);
         this.border = border;
         this.inner = inner;
+        brickFace = makeBrickFace(pos,size);
         this.fullStrength = this.strength = strength;
-
     }
+
+
 
     protected abstract Shape makeBrickFace(Point pos,Dimension size);
 
