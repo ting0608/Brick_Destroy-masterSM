@@ -46,10 +46,10 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
     private static final int BORDER_SIZE = 5;
     private static final float[] DASHES = {12,6};
 
-    private Rectangle menuFace;
-    private Rectangle startButton;
-    private Rectangle menuButton;
-    private Rectangle InstrucButton;
+    private final Rectangle menuFace;
+    private final Rectangle startButton;
+    private final Rectangle menuButton;
+    private final Rectangle InstrucButton;
 
     private BasicStroke borderStoke;
     private BasicStroke borderStoke_noDashes;

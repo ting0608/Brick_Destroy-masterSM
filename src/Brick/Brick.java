@@ -9,7 +9,7 @@ import java.awt.geom.Point2D;
 import java.util.Random;
 
 /**
- * Created by filippo on 04/09/16.
+ * Created by a 189cm lengzaii in 2021.
  *
  */
 abstract public class Brick  {
@@ -190,21 +190,21 @@ abstract public class Brick  {
 
     private boolean broken;
 
-    //here is brick() with separate constructors
+    //here is brick() with separate constructors, which refactor to BrickBuild
     public Brick(String name, Point pos, Dimension size, Color border,Color inner,  int strength){
-        rnd = new Random();
-        broken = false;
-        this.name = name;
-        this.border = border;
-        this.inner = inner;
-        brickFace = makeBrickFace(pos,size);
-        this.fullStrength = this.strength = strength;
+        //rnd = new Random();
+        //broken = false;
+        //this.name = name;
+        //this.border = border;
+        //this.inner = inner;
+        //brickFace = makeBrickFace(pos,size);
+        //this.fullStrength = this.strength = strength;
     }
 
 
 
     protected abstract Shape makeBrickFace(Point pos,Dimension size);
-
+ 
     public  boolean setImpact(Point2D point , int dir){
         if(broken)
             return false;
