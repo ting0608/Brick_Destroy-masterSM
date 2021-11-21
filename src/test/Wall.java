@@ -186,8 +186,8 @@ public class Wall {
         }
         else if(impactWall()){
             /*for efficiency reverse is done into method impactWall
-            * because for every brick program checks for horizontal and vertical impacts
-            */
+             * because for every brick program checks for horizontal and vertical impacts
+             */
             brickCount--;
         }
         else if(impactBorder()) {
