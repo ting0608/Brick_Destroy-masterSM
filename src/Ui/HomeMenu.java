@@ -62,6 +62,7 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
     private boolean startClicked;
     private boolean menuClicked;
     private boolean InfoClicked;
+    //JFrame frame = new JFrame();
 
     public HomeMenu(GameFrame owner,Dimension area){
 
@@ -285,6 +286,8 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
         else if(InfoButton.contains(p)){
             System.out.println("Info ");
             //owner.enableInfo(); , make a new page which contain info
+            owner.dispose();
+            Info MyInfo = new Info();
             //System.exit(0);
         }
 
