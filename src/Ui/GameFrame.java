@@ -15,10 +15,7 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package test;
-
-import Ui.GameBoard;
-import Ui.HomeMenu;
+package Ui;
 
 import javax.swing.*;
 import java.awt.*;
@@ -32,8 +29,8 @@ public class GameFrame extends JFrame implements WindowFocusListener {
 
     private static final String DEF_TITLE = "Brick Destroy";
 
-    private GameBoard gameBoard;
-    private HomeMenu homeMenu;
+    private final GameBoard gameBoard;
+    private final HomeMenu homeMenu;
 
     private boolean gaming;
 

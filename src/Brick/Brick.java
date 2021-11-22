@@ -38,7 +38,7 @@ abstract public class Brick  {
 
     private boolean broken;
 
-    //here is brick() with separate constructors, which refactor to BrickBuild
+    //here is brick() with constructors, which refactor to a new BrickBuild class
     Brick(String name, Point pos, Dimension size, Color border,Color inner,  int strength){
         rnd = new Random();
         broken = false;

@@ -17,8 +17,6 @@
  */
 package Ui;
 
-import test.GameFrame;
-
 import java.awt.*;
 
 

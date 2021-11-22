@@ -19,7 +19,7 @@ package Config;
 
 import test.Ball;
 import Ui.GameBoard;
-import test.Wall;
+import test.Config;
 
 import javax.swing.*;
 import java.awt.*;
@@ -34,17 +34,17 @@ public class  DebugConsole extends JDialog implements WindowListener{
     private JFrame owner;
     private DebugPanel debugPanel;
     private GameBoard gameBoard;
-    private Wall wall;
+    private Config config;
 
 
-    public DebugConsole(JFrame owner,Wall wall,GameBoard gameBoard){
+    public DebugConsole(JFrame owner, Config config, GameBoard gameBoard){
 
-        this.wall = wall;
+        this.config = config;
         this.owner = owner;
         this.gameBoard = gameBoard;
         initialize();
 
-        debugPanel = new DebugPanel(wall);
+        debugPanel = new DebugPanel(config);
         this.add(debugPanel,BorderLayout.CENTER);
 
 
@@ -96,7 +96,7 @@ public class  DebugConsole extends JDialog implements WindowListener{
     @Override
     public void windowActivated(WindowEvent windowEvent) {
         setLocation();
-        Ball b = wall.ball;
+        Ball b = config.ball;
         debugPanel.setValues(b.getSpeedX(),b.getSpeedY());
     }
 

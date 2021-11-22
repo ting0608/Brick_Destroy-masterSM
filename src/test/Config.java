@@ -24,7 +24,7 @@ import java.awt.geom.Point2D;
 import java.util.Random;
 
 
-public class Wall {
+public class Config {
 
     private static final int LEVELS_COUNT = 4;
 
@@ -47,7 +47,7 @@ public class Wall {
     private int ballCount;
     private boolean ballLost;
 
-    public Wall(Rectangle drawArea, int brickCount, int lineCount, double brickDimensionRatio, Point ballPos){
+    public Config(Rectangle drawArea, int brickCount, int lineCount, double brickDimensionRatio, Point ballPos){
 
         this.startPoint = new Point(ballPos);
 

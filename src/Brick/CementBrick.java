@@ -19,7 +19,7 @@ public class CementBrick extends Brick {
 
     public CementBrick(Point point, Dimension size){
         super(NAME,point,size,DEF_BORDER,DEF_INNER,CEMENT_STRENGTH);
-        crack = new Crack(this, DEF_CRACK_DEPTH,DEF_STEPS);
+        crack = new Crack(this, DEF_CRACK_DEPTH,DEF_STEPS); //didnt get crack from Brick anymore, so use this instead of brick.this
         brickFace = super.brickFace;
     }
 
