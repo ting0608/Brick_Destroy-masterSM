@@ -33,7 +33,7 @@ public class DebugPanel extends JPanel {
 
     private JButton skipLevel;
     private JButton resetBalls;
-    //private Jbutton setSpeed;
+
 
     private JSlider ballXSpeed;
     private JSlider ballYSpeed;
