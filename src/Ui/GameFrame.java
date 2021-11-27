@@ -76,22 +76,24 @@ public class GameFrame extends JFrame implements WindowFocusListener {
     public void enableHomeMenu(){
         this.dispose();
         this.remove(Info);
+        this.remove(gameBoard);
         this.add(homeMenu,BorderLayout.CENTER);
         this.setUndecorated(false);
         initialize();
         /*to avoid problems with graphics focus controller is added here*/
-        //this.addWindowFocusListener(this);
+        this.addWindowFocusListener(this);
 
     }
 
     public void enableInfo(){
         this.dispose();
         this.remove(homeMenu);
+
         this.add(Info,BorderLayout.CENTER);
         this.setUndecorated(false);
         initialize();
         /*to avoid problems with graphics focus controller is added here*/
-        //this.addWindowFocusListener(this);
+        this.addWindowFocusListener(this);
 
     }
 

@@ -30,6 +30,7 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
 
     private static final String CONTINUE = "Continue";
     private static final String RESTART = "Restart";
+    private static final String HOME = "Home";
     private static final String EXIT = "Exit";
     private static final String PAUSE = "Pause Menu";
     private static final int TEXT_SIZE = 30;
@@ -54,18 +55,18 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
     private Rectangle continueButtonRect;
     private Rectangle exitButtonRect;
     private Rectangle restartButtonRect;
+    private Rectangle HomeButtonRect;
     private int strLen;
 
     private DebugConsole debugConsole;
+    private GameFrame owner;
+    private GameBoard board;
 
-
-    public GameBoard(JFrame owner){
+    public GameBoard(GameFrame owner){
         super();
-
+        this.owner = owner;
         strLen = 0;
         showPauseMenu = false;
-
-
 
         menuFont = new Font("Monospaced",Font.PLAIN,TEXT_SIZE);
 
@@ -215,7 +216,6 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
         Font tmpFont = g2d.getFont();
         Color tmpColor = g2d.getColor();
 
-
         g2d.setFont(menuFont);
         g2d.setColor(MENU_COLOR);
 
@@ -230,9 +230,9 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
         g2d.drawString(PAUSE,x,y);
 
         x = this.getWidth() / 8;
-        y = this.getHeight() / 4;
+        y = this.getHeight() / 5;
 
-
+        //continue button
         if(continueButtonRect == null){
             FontRenderContext frc = g2d.getFontRenderContext();
             continueButtonRect = menuFont.getStringBounds(CONTINUE,frc).getBounds();
@@ -243,6 +243,7 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
 
         y *= 2;
 
+        //restart button
         if(restartButtonRect == null){
             restartButtonRect = (Rectangle) continueButtonRect.clone();
             restartButtonRect.setLocation(x,y-restartButtonRect.height);
@@ -252,13 +253,23 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
 
         y *= 3.0/2;
 
+        //Home button
+        if(HomeButtonRect == null){
+            HomeButtonRect = (Rectangle) continueButtonRect.clone();
+            HomeButtonRect.setLocation(x,y-HomeButtonRect.height);
+        }
+
+        g2d.drawString(HOME,x,y);
+
+        y *= 4.0/3;
+
+        //exit button
         if(exitButtonRect == null){
             exitButtonRect = (Rectangle) continueButtonRect.clone();
             exitButtonRect.setLocation(x,y-exitButtonRect.height);
         }
 
         g2d.drawString(EXIT,x,y);
-
 
 
         g2d.setFont(tmpFont);
@@ -319,6 +330,15 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
             showPauseMenu = false;
             repaint();
         }
+
+        else if(HomeButtonRect.contains(p)){
+
+            owner.enableHomeMenu();
+            showPauseMenu = false;
+
+        }
+
+
         else if(exitButtonRect.contains(p)){
             System.exit(0);
         }
@@ -354,7 +374,7 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
     public void mouseMoved(MouseEvent mouseEvent) {
         Point p = mouseEvent.getPoint();
         if(exitButtonRect != null && showPauseMenu) {
-            if (exitButtonRect.contains(p) || continueButtonRect.contains(p) || restartButtonRect.contains(p))
+            if (exitButtonRect.contains(p) || continueButtonRect.contains(p)|| HomeButtonRect.contains(p) || restartButtonRect.contains(p))
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
             else
                 this.setCursor(Cursor.getDefaultCursor());
