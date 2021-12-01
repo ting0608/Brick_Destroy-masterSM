@@ -50,6 +50,7 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
     private boolean showPauseMenu;
 
     private Font menuFont;
+    private Font messageFont;
     private Rectangle continueButtonRect;
     private Rectangle exitButtonRect;
     private Rectangle restartButtonRect;
@@ -70,8 +71,8 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
         strLen = 0;
         showPauseMenu = false;
 
-        menuFont = new Font("Monospaced",Font.PLAIN,TEXT_SIZE);
-
+        menuFont = new Font("Destroy",Font.PLAIN,TEXT_SIZE);
+        messageFont = new Font("Monospaced",Font.BOLD,18);
 
         this.initialize();
         message = "";
@@ -85,11 +86,11 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
             wallConfig.move();
             wallConfig.findImpacts();
             message = String.format("Bricks: %d Score: %d Balls: %d", wallConfig.getBrickCount(), Brick.getScore() , wallConfig.getBallCount());
+
             StrHighscore = String.format("HighScore: "+GetHighScore());//这行吃不到，再乔
             score = Brick.getScore();
 
             highscore = this.GetHighScore();
-
 
             if(wallConfig.isBallLost()){
                 if(wallConfig.ballEnd()){
@@ -211,8 +212,9 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
         clear(g2d);
 
         g2d.setColor(Color.BLUE);
-        g2d.drawString(message,250,225);
-        g2d.drawString(highscore,250,250);
+        g2d.setFont(messageFont);
+        g2d.drawString(message,150,225);
+        g2d.drawString(highscore,150,250);
         drawBall(wallConfig.ball,g2d);
 
         for(Brick b : wallConfig.bricks)

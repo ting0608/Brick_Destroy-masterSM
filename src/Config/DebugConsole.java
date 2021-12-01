@@ -19,7 +19,7 @@ package Config;
 
 import test.Ball;
 import Ui.GameBoard;
-import test.wallConfig;
+import Brick.wallConfig;
 
 import javax.swing.*;
 import java.awt.*;

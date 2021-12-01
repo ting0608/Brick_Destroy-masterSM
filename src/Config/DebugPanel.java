@@ -17,7 +17,7 @@
  */
 package Config;
 
-import test.wallConfig;
+import Brick.wallConfig;
 
 import javax.swing.*;
 import javax.swing.event.ChangeListener;

@@ -15,10 +15,13 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package test;
+package Brick;
 
 import Brick.*;
 import Ui.GameBoard;
+import test.Ball;
+import test.Player;
+import test.RubberBall;
 
 import java.awt.*;
 import java.awt.geom.Point2D;
