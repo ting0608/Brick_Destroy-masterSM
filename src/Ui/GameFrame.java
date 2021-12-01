@@ -17,6 +17,9 @@
  */
 package Ui;
 
+
+
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -27,13 +30,14 @@ import java.awt.event.WindowFocusListener;
 
 public class GameFrame extends JFrame implements WindowFocusListener {
 
-    private static final String DEF_TITLE = "Brick Destroy";
+    private static final String DEF_TITLE = "Tingcccc";
 
     private final GameBoard gameBoard;
     private final HomeMenu homeMenu;
 
     private boolean gaming;
     private Info Info;
+
 
     public GameFrame(){
         super();
@@ -44,7 +48,7 @@ public class GameFrame extends JFrame implements WindowFocusListener {
 
         gameBoard = new GameBoard(this);
 
-        homeMenu = new HomeMenu(this,new Dimension(450,300));
+        homeMenu = new HomeMenu(this,new Dimension(720,480));
 
         Info = new Info(this);
 
@@ -66,6 +70,7 @@ public class GameFrame extends JFrame implements WindowFocusListener {
     public void enableGameBoard(){
         this.dispose();
         this.remove(homeMenu);
+
         this.add(gameBoard,BorderLayout.CENTER);
         this.setUndecorated(true);
         initialize();
@@ -73,6 +78,8 @@ public class GameFrame extends JFrame implements WindowFocusListener {
         this.addWindowFocusListener(this);
 
     }
+
+
     public void enableHomeMenu(){
         this.dispose();
         this.remove(Info);
@@ -96,6 +103,7 @@ public class GameFrame extends JFrame implements WindowFocusListener {
         this.addWindowFocusListener(this);
 
     }
+
 
     private void autoLocate(){
         Dimension size = Toolkit.getDefaultToolkit().getScreenSize();

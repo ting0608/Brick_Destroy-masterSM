@@ -9,15 +9,13 @@ public class Info extends JComponent implements MouseListener, MouseMotionListen
     private Image image1;
     private GameFrame owner;
 
+    //tbc wanna add or not, depends on time
+    private Rectangle NextButton;
+    private boolean NextClicked;
+
 
     public Info(GameFrame owner) {
-        /*JFrame frame = new JFrame("Instruction 1");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setSize(500,400);
-        frame.setLocation(500,250);
-        frame.setVisible(true);
-        frame.add(this);*/
+
         this.initialize();
         this.setFocusable(true);
         this.requestFocusInWindow();
@@ -26,8 +24,9 @@ public class Info extends JComponent implements MouseListener, MouseMotionListen
     }
 
     public void initialize() {
-        this.setPreferredSize(new Dimension(550, 400));
+        this.setPreferredSize(new Dimension(720, 480));
         this.setVisible(true);
+
     }
 
     public void paint(Graphics g) {
@@ -36,10 +35,12 @@ public class Info extends JComponent implements MouseListener, MouseMotionListen
 
 
     public void img(Graphics g) {
-        image1 = Toolkit.getDefaultToolkit().getImage("Images/1.png");
+        image1 = Toolkit.getDefaultToolkit().getImage("Images/infoback2.png");
         g.drawImage(image1, 0, 0, getWidth(), getHeight(), this);
 
     }
+
+
 
 
     @Override

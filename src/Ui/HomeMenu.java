@@ -91,11 +91,12 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
         greetingsFont = new Font("Noto Mono",Font.PLAIN,25);
         gameTitleFont = new Font("Noto Mono",Font.BOLD,40);
         creditsFont = new Font("Monospaced",Font.PLAIN,10);
-        buttonFont = new Font("Monospaced",Font.PLAIN,startButton.height-2);
+        buttonFont = new Font("Monospaced",Font.PLAIN,startButton.height-4);
 
 
 
     }
+
 
 
 
@@ -285,6 +286,8 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
 
     }
 
+
+
     @Override
     public void mouseClicked(MouseEvent mouseEvent) {
         Point p = mouseEvent.getPoint();
@@ -295,10 +298,16 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
         else if(InfoButton.contains(p)){
             //System.out.println("Info ");
             //owner.enableInfo(); , make a new page which contain info
-
             owner.enableInfo();
             //System.exit(0);
         }
+
+        /*else if(BoardButton.contains(p)){
+            //System.out.println("Info ");
+            //owner.enableInfo(); , make a new page which contain info
+            owner.enableScore();
+            //System.exit(0);
+        }*/
 
         else if(menuButton.contains(p)){
             System.out.println("Goodbye " + System.getProperty("user.name"));
@@ -314,6 +323,8 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
             RepaintStart();
 
         }
+
+
         else if(InfoButton.contains(p)){
             InfoClicked = true;
             RepaintInfo();
@@ -331,6 +342,7 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
             startClicked = false;
             RepaintStart();
         }
+
 
         else if(InfoClicked){
             InfoClicked = false;
@@ -377,7 +389,10 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
 
     public void RepaintInfo(){
         repaint(InfoButton.x,InfoButton.y,InfoButton.width+1,InfoButton.height+1);
+    }
 
+    public void RepaintBoard(){
+        repaint(InfoButton.x,InfoButton.y,InfoButton.width+1,InfoButton.height+1);
     }
 
     public void RepaintMenu(){

@@ -21,6 +21,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.font.FontRenderContext;
+import java.io.*;
+
 import test.*;
 import Brick.*;
 import Config.*;
@@ -39,28 +41,28 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
 
     private static final int DEF_WIDTH = 600;
     private static final int DEF_HEIGHT = 450;
-
     private static final Color BG_COLOR = Color.WHITE;
 
     private Timer gameTimer;
-
-    private Config config;
-
+    private wallConfig wallConfig;
     private String message;
 
     private boolean showPauseMenu;
 
     private Font menuFont;
-
     private Rectangle continueButtonRect;
     private Rectangle exitButtonRect;
     private Rectangle restartButtonRect;
     private Rectangle HomeButtonRect;
     private int strLen;
+    private  String highscore = "";
+    private int score;
+
 
     private DebugConsole debugConsole;
     private GameFrame owner;
     private GameBoard board;
+    private String StrHighscore;
 
     public GameBoard(GameFrame owner){
         super();
@@ -73,41 +75,122 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
 
         this.initialize();
         message = "";
-        config = new Config(new Rectangle(0,0,DEF_WIDTH,DEF_HEIGHT),30,3,6/2,new Point(300,430));
+        wallConfig = new wallConfig(new Rectangle(0,0,DEF_WIDTH,DEF_HEIGHT),30,3,6/2,new Point(300,430));
 
-        debugConsole = new DebugConsole(owner, config,this);
+        debugConsole = new DebugConsole(owner, wallConfig,this);
         //initialize the first level
-        config.nextLevel();
+        wallConfig.nextLevel();
 
         gameTimer = new Timer(10,e ->{
-            config.move();
-            config.findImpacts();
-            message = String.format("Bricks: %d Balls %d", config.getBrickCount(), config.getBallCount());
-            if(config.isBallLost()){
-                if(config.ballEnd()){
-                    config.wallReset();
+            wallConfig.move();
+            wallConfig.findImpacts();
+            message = String.format("Bricks: %d Score: %d Balls: %d", wallConfig.getBrickCount(), Brick.getScore() , wallConfig.getBallCount());
+            StrHighscore = String.format("HighScore: "+GetHighScore());//这行吃不到，再乔
+            score = Brick.getScore();
+
+            highscore = this.GetHighScore();
+
+
+            if(wallConfig.isBallLost()){
+                if(wallConfig.ballEnd()){
+                    wallConfig.wallReset();
+                    wallConfig.scoreReset();
                     message = "Game over";
+                    CheckScore();
+
                 }
-                config.ballReset();
+                wallConfig.ballReset();
                 gameTimer.stop();
             }
-            else if(config.isDone()){
-                if(config.hasLevel()){
+            else if(wallConfig.isDone()){
+                if(wallConfig.hasLevel()){
                     message = "Go to Next Level";
                     gameTimer.stop();
-                    config.ballReset();
-                    config.wallReset();
-                    config.nextLevel();
+                    //wallConfig.ballReset();
+                    wallConfig.wallReset();
+                    wallConfig.nextLevel();
                 }
                 else{
                     message = "ALL WALLS DESTROYED";
                     gameTimer.stop();
+                    wallConfig.scoreReset();
                 }
             }
 
             repaint();
         });
 
+    }
+
+    public String GetHighScore() {
+        //format: lanjiao : 100
+        FileReader readFile;
+        BufferedReader reader = null;
+        try{
+            readFile = new FileReader("highscore.txt");
+            reader=  new BufferedReader(readFile);
+            return reader.readLine();
+        }
+        catch (Exception e){
+            return "0";
+        }
+        finally {
+            try {
+                if(reader!=null)
+                reader.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
+    public void CheckScore(){
+        int intHighScore;
+
+        String parts[]=StrHighscore.split(":");
+
+        if(GetHighScore() == "0" || GetHighScore() == null){
+            intHighScore = 0;
+        }
+        else{
+            intHighScore = Integer.parseInt(parts[2]);
+        }
+        if(score>intHighScore || GetHighScore()==null)
+        {
+            String name = JOptionPane.showInputDialog("You break the record. May i know your name?");
+            StrHighscore = name+":"+score;
+
+            File scoreFile = new File("Highscore.txt");
+            if(!scoreFile.exists())
+            {
+                try{
+                    scoreFile.createNewFile();
+                }catch (IOException e){
+                    e.printStackTrace();
+                }
+            }
+            FileWriter writeFile;
+            BufferedWriter writer = null;
+            try{
+                writeFile = new FileWriter(scoreFile);
+                writer = new BufferedWriter(writeFile);
+                writer.write(this.StrHighscore);
+            }
+            catch (Exception e)
+            {
+                //errors
+
+            }
+            finally {
+                try{
+                    if (writer!=null)
+                        writer.close();
+                }
+                catch(Exception e){}
+            }
+
+        }
     }
 
 
@@ -125,25 +208,26 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
     public void paint(Graphics g){
 
         Graphics2D g2d = (Graphics2D) g;
-
         clear(g2d);
 
         g2d.setColor(Color.BLUE);
         g2d.drawString(message,250,225);
+        g2d.drawString(highscore,250,250);
+        drawBall(wallConfig.ball,g2d);
 
-        drawBall(config.ball,g2d);
-
-        for(Brick b : config.bricks)
+        for(Brick b : wallConfig.bricks)
             if(!b.isBroken())
                 drawBrick(b,g2d);
 
-        drawPlayer(config.player,g2d);
+        drawPlayer(wallConfig.player,g2d);
 
         if(showPauseMenu)
             drawMenu(g2d);
 
         Toolkit.getDefaultToolkit().sync();
+
     }
+
 
     private void clear(Graphics2D g2d){
         Color tmp = g2d.getColor();
@@ -284,10 +368,10 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
     public void keyPressed(KeyEvent keyEvent) {
         switch(keyEvent.getKeyCode()){
             case KeyEvent.VK_A:
-                config.player.moveLeft();
+                wallConfig.player.moveLeft();
                 break;
             case KeyEvent.VK_D:
-                config.player.movRight();
+                wallConfig.player.movRight();
                 break;
             case KeyEvent.VK_ESCAPE:
                 showPauseMenu = !showPauseMenu;
@@ -305,13 +389,13 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
                 if(keyEvent.isAltDown() && keyEvent.isShiftDown())
                     debugConsole.setVisible(true);
             default:
-                config.player.stop();
+                wallConfig.player.stop();
         }
     }
 
     @Override
     public void keyReleased(KeyEvent keyEvent) {
-        config.player.stop();
+        wallConfig.player.stop();
     }
 
     @Override
@@ -325,8 +409,9 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
         }
         else if(restartButtonRect.contains(p)){
             message = "Restarting Game...";
-            config.ballReset();
-            config.wallReset();
+            wallConfig.ballReset();
+            wallConfig.wallReset();
+            wallConfig.scoreReset();
             showPauseMenu = false;
             repaint();
         }

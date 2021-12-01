@@ -4,7 +4,7 @@ import Brick.Brick;
 
 import java.awt.*;
 import java.awt.Point;
-
+import java.awt.geom.Point2D;
 
 
 /**
@@ -17,10 +17,7 @@ public class ClayBrick extends Brick {
     private static final Color DEF_INNER = new Color(178, 34, 34).darker();
     private static final Color DEF_BORDER = Color.GRAY;
     private static final int CLAY_STRENGTH = 1;
-
-
-
-
+    public int GainScore = 1;
 
 
     public ClayBrick(Point point, Dimension size){
@@ -35,6 +32,14 @@ public class ClayBrick extends Brick {
     @Override
     public Shape getBrick() {
         return super.brickFace;
+    }
+
+    @Override
+    public boolean setImpact(Point2D point, int dir) {
+        if(super.isBroken())
+            return false;
+        super.impact(GainScore);
+        return true;
     }
 
 

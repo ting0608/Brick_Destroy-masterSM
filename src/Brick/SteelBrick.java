@@ -17,8 +17,6 @@
  */
 package Brick;
 
-import Brick.Brick;
-
 import java.awt.*;
 import java.awt.geom.Point2D;
 import java.util.Random;
@@ -34,6 +32,7 @@ public class SteelBrick extends Brick {
 
     private Random rnd;
     private Shape brickFace;
+    public int GainScore = 3;
 
     public SteelBrick(Point point, Dimension size){
         super(NAME,point,size,DEF_BORDER,DEF_INNER,STEEL_STRENGTH);
@@ -61,7 +60,7 @@ public class SteelBrick extends Brick {
 
     public void impact(){
         if(rnd.nextDouble() < STEEL_PROBABILITY){
-            super.impact();
+            super.impact(GainScore);
         }
     }
 

@@ -4,8 +4,11 @@ import test.*;
 
 import java.awt.*;
 import java.awt.Point;
-import java.awt.geom.GeneralPath;
 import java.awt.geom.Point2D;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Random;
 
 /**
@@ -26,13 +29,15 @@ abstract public class Brick  {
 
 
     public static Random rnd;
+    public static int Score = 0;
+
 
     private String name;
     Shape brickFace;
 
     private Color border;
     private Color inner;
-
+    public int GainScore = 0;
     private int fullStrength;
     private int strength;
 
@@ -56,13 +61,11 @@ abstract public class Brick  {
     public  boolean setImpact(Point2D point , int dir){
         if(broken)
             return false;
-        impact();
+        impact(GainScore);
         return  broken;
     }
 
     public abstract Shape getBrick();
-
-
 
     public Color getBorderColor(){
         return  border;
@@ -97,11 +100,18 @@ abstract public class Brick  {
         strength = fullStrength;
     }
 
-    public void impact(){
+    public void impact(int plusScore){
         strength--;
         broken = (strength == 0);
+        if(broken){
+            Score+=plusScore;
+        }
+
     }
 
+    public static int getScore(){
+        return Score;
+    }
 
 
 }

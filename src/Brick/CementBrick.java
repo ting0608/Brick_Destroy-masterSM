@@ -12,6 +12,7 @@ public class CementBrick extends Brick {
     private static final Color DEF_INNER = new Color(147, 147, 147);
     private static final Color DEF_BORDER = new Color(217, 199, 175);
     private static final int CEMENT_STRENGTH = 2;
+    public int GainScore = 2;
 
     private Crack crack;
     private Shape brickFace;
@@ -32,7 +33,7 @@ public class CementBrick extends Brick {
     public boolean setImpact(Point2D point, int dir) {
         if(super.isBroken())
             return false;
-        super.impact();
+        super.impact(GainScore);
         if(!super.isBroken()){
             crack.makeCrack(point,dir);
             updateBrick();

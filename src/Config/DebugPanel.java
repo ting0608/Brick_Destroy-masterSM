@@ -17,7 +17,7 @@
  */
 package Config;
 
-import test.Config;
+import test.wallConfig;
 
 import javax.swing.*;
 import javax.swing.event.ChangeListener;
@@ -38,19 +38,19 @@ public class DebugPanel extends JPanel {
     private JSlider ballXSpeed;
     private JSlider ballYSpeed;
 
-    private Config config; //change the name from wall to config, since 'wall' feels meaningless
+    private wallConfig wallConfig; //change the name from wall to wallConfig, since 'wall' feels meaningless
 
-    public DebugPanel(Config config){
+    public DebugPanel(wallConfig wallConfig){
 
-        this.config = config;
+        this.wallConfig = wallConfig;
 
         initialize();
 
-        skipLevel = makeButton("Skip Level",e -> config.nextLevel());
-        resetBalls = makeButton("Reset Balls",e -> config.resetBallCount());
+        skipLevel = makeButton("Skip Level",e -> wallConfig.nextLevel());
+        resetBalls = makeButton("Reset Balls",e -> wallConfig.resetBallCount());
 
-        ballXSpeed = makeSlider(-4,4,e -> config.setBallXSpeed(ballXSpeed.getValue()));
-        ballYSpeed = makeSlider(-4,4,e -> config.setBallYSpeed(ballYSpeed.getValue()));
+        ballXSpeed = makeSlider(-4,4,e -> wallConfig.setBallXSpeed(ballXSpeed.getValue()));
+        ballYSpeed = makeSlider(-4,4,e -> wallConfig.setBallYSpeed(ballYSpeed.getValue()));
 
         this.add(skipLevel);
         this.add(resetBalls);

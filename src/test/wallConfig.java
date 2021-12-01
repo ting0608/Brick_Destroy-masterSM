@@ -18,19 +18,21 @@
 package test;
 
 import Brick.*;
+import Ui.GameBoard;
 
 import java.awt.*;
 import java.awt.geom.Point2D;
 import java.util.Random;
 
+//change class name from wall -> config -> wall config
+public class wallConfig {
 
-public class Config {
-
-    private static final int LEVELS_COUNT = 4;
+    private static final int LEVELS_COUNT = 5; //add level counts
 
     private static final int CLAY = 1;
     private static final int STEEL = 2;
     private static final int CEMENT = 3;
+    private static final int HARDCORE = 4; //new level
 
     private Random rnd;
     private Rectangle area;
@@ -45,9 +47,10 @@ public class Config {
     private Point startPoint;
     private int brickCount;
     private int ballCount;
+    private int scoreCount;
     private boolean ballLost;
 
-    public Config(Rectangle drawArea, int brickCount, int lineCount, double brickDimensionRatio, Point ballPos){
+    public wallConfig(Rectangle drawArea, int brickCount, int lineCount, double brickDimensionRatio, Point ballPos){
 
         this.startPoint = new Point(ballPos);
 
@@ -172,6 +175,7 @@ public class Config {
         tmp[1] = makeChessboardLevel(drawArea,brickCount,lineCount,brickDimensionRatio,CLAY,CEMENT);
         tmp[2] = makeChessboardLevel(drawArea,brickCount,lineCount,brickDimensionRatio,CLAY,STEEL);
         tmp[3] = makeChessboardLevel(drawArea,brickCount,lineCount,brickDimensionRatio,STEEL,CEMENT);
+        tmp[4] = makeChessboardLevel(drawArea,brickCount,lineCount,brickDimensionRatio,STEEL,HARDCORE);
         return tmp;
     }
 
@@ -189,6 +193,7 @@ public class Config {
              * because for every brick program checks for horizontal and vertical impacts
              */
             brickCount--;
+
         }
         else if(impactBorder()) {
             ball.reverseX();
@@ -264,6 +269,11 @@ public class Config {
         ballCount = 3;
     }
 
+    public void scoreReset(){
+        Brick.Score = 0;
+    }
+
+
     public boolean ballEnd(){
         return ballCount == 0;
     }
@@ -276,6 +286,7 @@ public class Config {
         bricks = levels[level++];
         this.brickCount = bricks.length;
     }
+
 
     public boolean hasLevel(){
         return level < levels.length;
@@ -304,6 +315,9 @@ public class Config {
                 break;
             case CEMENT:
                 out = new CementBrick(point, size);
+                break;
+            case HARDCORE: //hardcore case
+                out = new HardcoreBrick(point, size);
                 break;
             default:
                 throw  new IllegalArgumentException(String.format("Unknown Type:%d\n",type));
