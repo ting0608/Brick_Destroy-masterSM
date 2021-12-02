@@ -87,9 +87,8 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
             wallConfig.findImpacts();
             message = String.format("Bricks: %d Score: %d Balls: %d", wallConfig.getBrickCount(), Brick.getScore() , wallConfig.getBallCount());
 
-            StrHighscore = String.format("HighScore: "+GetHighScore());//这行吃不到，再乔
+            StrHighscore = String.format("HighScore: "+GetHighScore());
             score = Brick.getScore();
-
             highscore = this.GetHighScore();
 
             if(wallConfig.isBallLost()){
@@ -124,7 +123,7 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
     }
 
     public String GetHighScore() {
-        //format: lanjiao : 100
+        //format: hi : 100
         FileReader readFile;
         BufferedReader reader = null;
         try{
@@ -238,14 +237,14 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
         g2d.setColor(tmp);
     }
 
-    private void drawBrick(Brick brick,Graphics2D g2d){
+    private void drawBrick(Brick Brick,Graphics2D g2d){
         Color tmp = g2d.getColor();
 
-        g2d.setColor(brick.getInnerColor());
-        g2d.fill(brick.getBrick());
+        g2d.setColor(Brick.getInnerColor());
+        g2d.fill(Brick.getBrick());
 
-        g2d.setColor(brick.getBorderColor());
-        g2d.draw(brick.getBrick());
+        g2d.setColor(Brick.getBorderColor());
+        g2d.draw(Brick.getBrick());
 
 
         g2d.setColor(tmp);

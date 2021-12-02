@@ -28,16 +28,15 @@ import java.awt.geom.Rectangle2D;
 
 public class HomeMenu extends JComponent implements MouseListener, MouseMotionListener {
 
-    private static final String GREETINGS = "Welcome to:";
-    private static final String GAME_TITLE = "Brick Destroy";
+    private static final String GREETINGS = "Welcome to";
+    private static final String GAME_TITLE = "Brick Destroy Game";
     private static final String CREDITS = "Version 2.1";
-    private static final String START_TEXT = "Start";
-    private static final String MENU_TEXT = "Exit";
-    private static final String Info_TEXT = "Instruction";
+    private static final String START_TEXT = "START";
+    private static final String MENU_TEXT = "EXIT";
+    private static final String Info_TEXT = "INSTRUCTION";
 
-    //private static final Color BG_COLOR = Color.GREEN.darker();
-    private static final Color BORDER_COLOR = new Color(200,8,21); //Venetian Red
-    private static final Color DASH_BORDER_COLOR = new  Color(255, 216, 0);//school bus yellow
+    private static final Color BORDER_COLOR = new Color(200,8,21); //
+    private static final Color DASH_BORDER_COLOR = new  Color(255, 216, 0);//
     private static final Color TEXT_COLOR = new Color(200, 255, 254);//
     private static final Color CLICKED_BUTTON_COLOR = Color.GREEN;
     private static final Color CLICKED_TEXT = Color.WHITE;
@@ -86,9 +85,9 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
         borderStoke = new BasicStroke(BORDER_SIZE,BasicStroke.CAP_ROUND,BasicStroke.JOIN_ROUND,0,DASHES,0);
         borderStoke_noDashes = new BasicStroke(BORDER_SIZE,BasicStroke.CAP_ROUND,BasicStroke.JOIN_ROUND);
 
-        greetingsFont = new Font("Noto Mono",Font.PLAIN,25);
+        greetingsFont = new Font("Noto Mono",Font.PLAIN,30);
         gameTitleFont = new Font("Noto Mono",Font.BOLD,40);
-        creditsFont = new Font("Monospaced",Font.PLAIN,10);
+        creditsFont = new Font("Destroy",Font.PLAIN,15);
         buttonFont = new Font("Monospaced",Font.PLAIN,startButton.height-4);
 
 
@@ -136,10 +135,6 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
     }
 
     private void drawContainer(Graphics2D g2d){
-        //Color prev = g2d.getColor();
-
-        //g2d.setColor(BG_COLOR);
-        //g2d.fill(menuFace);
         drawBackground(g2d);
 
         Stroke tmp = g2d.getStroke();
@@ -151,7 +146,6 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
         g2d.setStroke(borderStoke);
         g2d.setColor(BORDER_COLOR);
         g2d.draw(menuFace);
-
         g2d.setStroke(tmp);
 
         //g2d.setColor(prev);
@@ -193,11 +187,9 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
     private void drawButton(Graphics2D g2d){
 
         FontRenderContext frc = g2d.getFontRenderContext();
-
         Rectangle2D txtRect = buttonFont.getStringBounds(START_TEXT,frc);
         Rectangle2D mTxtRect = buttonFont.getStringBounds(MENU_TEXT,frc);
         Rectangle2D nTxtRect = buttonFont.getStringBounds(Info_TEXT,frc);
-
         g2d.setFont(buttonFont);
         //start location and button setup
         int x = (menuFace.width - startButton.width) / 2;
@@ -293,18 +285,11 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
 
         }
         else if(InfoButton.contains(p)){
-            //System.out.println("Info ");
             //owner.enableInfo(); , make a new page which contain info
             owner.enableInfo();
-            //System.exit(0);
+
         }
 
-        /*else if(BoardButton.contains(p)){
-            //System.out.println("Info ");
-            //owner.enableInfo(); , make a new page which contain info
-            owner.enableScore();
-            //System.exit(0);
-        }*/
 
         else if(menuButton.contains(p)){
             System.out.println("Goodbye " + System.getProperty("user.name"));

@@ -15,7 +15,9 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package Ui;
+
+import Ui.GameFrame;
+import test.Sound;
 
 import java.awt.*;
 
@@ -23,6 +25,7 @@ import java.awt.*;
 public class GraphicsMain {
 
     public static void main(String[] args){
+
         EventQueue.invokeLater(() -> new GameFrame().initialize());
     }
 
