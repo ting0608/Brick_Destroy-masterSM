@@ -62,7 +62,7 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
 
     private DebugConsole debugConsole;
     private GameFrame owner;
-    private GameBoard board;
+
     private String StrHighscore;
 
     public GameBoard(GameFrame owner){
@@ -102,18 +102,24 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
                 wallConfig.ballReset();
                 gameTimer.stop();
             }
-            else if(wallConfig.isDone()){
-                if(wallConfig.hasLevel()){
-                    message = "Go to Next Level";
-                    gameTimer.stop();
-                    //wallConfig.ballReset();
-                    wallConfig.wallReset();
-                    wallConfig.nextLevel();
+            else if(wallConfig.isDone()) {
+                if (wallConfig.getBallCount() == 3) {
+                    System.out.println("Bonus score multiplier due to no damage taken"); //reward
+                    Brick.Score = Brick.Score*2;
                 }
-                else{
-                    message = "ALL WALLS DESTROYED";
-                    gameTimer.stop();
-                    wallConfig.scoreReset();
+                {
+                    if (wallConfig.hasLevel()) {
+                        message = "Go to Next Level";
+                        gameTimer.stop();
+                        //wallConfig.ballReset();
+                        wallConfig.wallReset();
+                        wallConfig.nextLevel();
+
+                    } else {
+                        message = "ALL WALLS DESTROYED";
+                        gameTimer.stop();
+                        wallConfig.scoreReset();
+                    }
                 }
             }
 

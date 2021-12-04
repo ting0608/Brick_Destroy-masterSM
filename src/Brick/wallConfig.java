@@ -49,8 +49,7 @@ public class wallConfig {
 
     private Point startPoint;
     private int brickCount;
-    private int ballCount;
-    private int scoreCount;
+    public int ballCount;
     private boolean ballLost;
 
     public wallConfig(Rectangle drawArea, int brickCount, int lineCount, double brickDimensionRatio, Point ballPos){
@@ -207,6 +206,10 @@ public class wallConfig {
         else if(ball.getPosition().getY() > area.getY() + area.getHeight()){
             ballCount--;
             ballLost = true;
+            Brick.Score = Brick.Score-10;
+            System.out.println("Lol you noob, score-10"); //penalty
+
+
         }
     }
 
@@ -288,6 +291,7 @@ public class wallConfig {
     public void nextLevel(){
         bricks = levels[level++];
         this.brickCount = bricks.length;
+
     }
 
 
