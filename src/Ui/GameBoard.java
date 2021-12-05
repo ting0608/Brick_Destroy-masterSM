@@ -23,7 +23,7 @@ import java.awt.event.*;
 import java.awt.font.FontRenderContext;
 import java.io.*;
 
-import test.*;
+import User.*;
 import Brick.*;
 import Config.*;
 

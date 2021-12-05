@@ -17,16 +17,19 @@
  */
 package Brick;
 
-import Brick.*;
-import Ui.GameBoard;
-import test.Ball;
-import test.Player;
-import test.RubberBall;
+import User.Ball;
+import User.Player;
+import User.RubberBall;
 
 import java.awt.*;
 import java.awt.geom.Point2D;
 import java.util.Random;
 
+/**
+ * Created by a 189cm lengzaii, tingcc.
+ * @author tingcc
+ * @since 11/11/2021
+ */
 //change class name from wall -> config -> wall config
 public class wallConfig {
 
@@ -52,6 +55,13 @@ public class wallConfig {
     public int ballCount;
     private boolean ballLost;
 
+    /**
+     * @param drawArea draw the brick rectangle
+     * @param brickCount to know the brick counts
+     * @param lineCount the line counts of bricks, basically 3
+     * @param brickDimensionRatio bricks ratio, for sizing
+     * @param ballPos ball position
+     */
     public wallConfig(Rectangle drawArea, int brickCount, int lineCount, double brickDimensionRatio, Point ballPos){
 
         this.startPoint = new Point(ballPos);
@@ -171,6 +181,10 @@ public class wallConfig {
         ball = new RubberBall(ballPos);
     }
 
+    /**
+     * actually here is just few temporary situation with 0-4, which means level setup(which bricks for which level)
+     * @return tmp
+     */
     private Brick[][] makeLevels(Rectangle drawArea,int brickCount,int lineCount,double brickDimensionRatio){
         Brick[][] tmp = new Brick[LEVELS_COUNT][];
         tmp[0] = makeSingleTypeLevel(drawArea,brickCount,lineCount,brickDimensionRatio,CLAY);
@@ -181,6 +195,9 @@ public class wallConfig {
         return tmp;
     }
 
+    /**
+     * just calling move() to move the bar and ball
+     */
     public void move(){
         player.move();
         ball.move();
@@ -241,18 +258,30 @@ public class wallConfig {
         return ((p.getX() < area.getX()) ||(p.getX() > (area.getX() + area.getWidth())));
     }
 
+    /**
+     * @return brickCount, to let player know bricks remaining
+     */
     public int getBrickCount(){
         return brickCount;
     }
 
+    /**
+     * @return ballCount, let player know lives left
+     */
     public int getBallCount(){
         return ballCount;
     }
 
+    /**
+     * @return boolean to know if ball is lost or not
+     */
     public boolean isBallLost(){
         return ballLost;
     }
 
+    /**
+     * this one is ballReset method which move ball to original point
+     */
     public void ballReset(){
         player.moveTo(startPoint);
         ball.moveTo(startPoint);
@@ -268,6 +297,9 @@ public class wallConfig {
         ballLost = false;
     }
 
+    /**
+     * wallReset means repaint the wall/level, which also reset the ball count, usually use this when player click restart
+     */
     public void wallReset(){
         for(Brick b : bricks)
             b.repair();
@@ -284,10 +316,18 @@ public class wallConfig {
         return ballCount == 0;
     }
 
+    /**
+     * boolean isDone to know that whether all the bricks break
+     * @return brickCount == 0,
+     */
     public boolean isDone(){
         return brickCount == 0;
     }
 
+    /**
+     * usually use in skip level or after is done
+     * lead player to nextLevel by increasing the level with 1
+     */
     public void nextLevel(){
         bricks = levels[level++];
         this.brickCount = bricks.length;
@@ -299,6 +339,9 @@ public class wallConfig {
         return level < levels.length;
     }
 
+    /**
+     * @param s
+     */
     public void setBallXSpeed(int s){
         ball.setXSpeed(s);
     }
@@ -307,6 +350,9 @@ public class wallConfig {
         ball.setYSpeed(s);
     }
 
+    /**
+     * this resetBallCount is to reset balls to 3 when player click reset ball
+     */
     public void resetBallCount(){
         ballCount = 3;
     }

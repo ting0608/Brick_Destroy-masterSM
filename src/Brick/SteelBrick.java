@@ -22,6 +22,11 @@ import java.awt.geom.Point2D;
 import java.util.Random;
 
 
+/**
+ * Created by a 189cm lengzaii, tingcc.
+ * @author tingcc
+ * @since 11/11/2021
+ */
 public class SteelBrick extends Brick {
 
     private static final String NAME = "Steel Brick";
@@ -34,6 +39,11 @@ public class SteelBrick extends Brick {
     private Shape brickFace;
     public int GainScore = 3;
 
+    /**
+     * @param point break point
+     * @param size dimension size
+     * need to use rnd since Steel brick only breaks while achieve the probability set
+     */
     public SteelBrick(Point point, Dimension size){
         super(NAME,point,size,DEF_BORDER,DEF_INNER,STEEL_STRENGTH);
         rnd = new Random();
@@ -46,6 +56,9 @@ public class SteelBrick extends Brick {
         return new Rectangle(pos,size);
     }
 
+    /**
+     * @return brickFace to get the type of brick
+     */
     @Override
     public Shape getBrick() {
         return brickFace;
@@ -58,6 +71,9 @@ public class SteelBrick extends Brick {
         return  super.isBroken();
     }
 
+    /**
+     * use rnd to get random probability, if < than the probability set then GainScore
+     */
     public void impact(){
         if(rnd.nextDouble() < STEEL_PROBABILITY){
             super.impact(GainScore);

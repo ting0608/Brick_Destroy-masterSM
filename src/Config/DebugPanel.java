@@ -25,7 +25,11 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 
 
-
+/**
+ * Created by a 189cm lengzaii, tingcc.
+ * @author tingcc
+ * @since 11/11/2021
+ */
 public class DebugPanel extends JPanel {
 
     private static final Color DEF_BKG = Color.WHITE;
@@ -40,6 +44,12 @@ public class DebugPanel extends JPanel {
 
     private wallConfig wallConfig; //change the name from wall to wallConfig, since 'wall' feels meaningless
 
+    /**
+     * @param wallConfig needed since we need the nextLevel and resetBallCount method
+     * skip level button to next level
+     * reset balls button to reset ball count
+     * 2 sliders used to adjust ball speed, 1 for ball's x-axis and 1 for ball's y-axis
+     */
     public DebugPanel(wallConfig wallConfig){
 
         this.wallConfig = wallConfig;
@@ -60,17 +70,31 @@ public class DebugPanel extends JPanel {
 
     }
 
+    /**
+     * initialize debugPanel background
+     */
     private void initialize(){
         this.setBackground(DEF_BKG);
         this.setLayout(new GridLayout(2,2));
     }
 
+    /**
+     * @param title button title can be found above
+     * @param e, just a parameter for action listener
+     * @return
+     */
     private JButton makeButton(String title, ActionListener e){
         JButton out = new JButton(title);
         out.addActionListener(e);
         return  out;
     }
 
+    /**
+     * @param min minimum Slider could do
+     * @param max maximum Slider could do
+     * @param e
+     * @return
+     */
     private JSlider makeSlider(int min, int max, ChangeListener e){
         JSlider out = new JSlider(min,max);
         out.setMajorTickSpacing(1);

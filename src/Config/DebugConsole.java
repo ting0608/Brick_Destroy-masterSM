@@ -17,7 +17,7 @@
  */
 package Config;
 
-import test.Ball;
+import User.Ball;
 import Ui.GameBoard;
 import Brick.wallConfig;
 
@@ -26,6 +26,11 @@ import java.awt.*;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
+/**
+ * Created by a 189cm lengzaii, tingcc.
+ * @author tingcc
+ * @since 11/11/2021
+ */
 public class  DebugConsole extends JDialog implements WindowListener{
 
     private static final String TITLE = "Debug Console";
@@ -37,6 +42,12 @@ public class  DebugConsole extends JDialog implements WindowListener{
     private wallConfig wallConfig;
 
 
+    /**
+     * @param owner Jframe be the owner for the frame
+     * @param wallConfig
+     * @param gameBoard
+     * calling and inherit other methods
+     */
     public DebugConsole(JFrame owner, wallConfig wallConfig, GameBoard gameBoard){
 
         this.wallConfig = wallConfig;
@@ -51,6 +62,9 @@ public class  DebugConsole extends JDialog implements WindowListener{
         this.pack();
     }
 
+    /**
+     * initialize debug console
+     */
     private void initialize(){
         this.setModal(true);
         this.setTitle(TITLE);
@@ -61,6 +75,9 @@ public class  DebugConsole extends JDialog implements WindowListener{
     }
 
 
+    /**
+     * set debug console's location
+     */
     private void setLocation(){
         int x = ((owner.getWidth() - this.getWidth()) / 2) + owner.getX();
         int y = ((owner.getHeight() - this.getHeight()) / 2) + owner.getY();
@@ -73,6 +90,10 @@ public class  DebugConsole extends JDialog implements WindowListener{
 
     }
 
+    /**
+     * @param windowEvent
+     * this line means while closing debug console window, repaint gameBoard
+     */
     @Override
     public void windowClosing(WindowEvent windowEvent) {
         gameBoard.repaint();

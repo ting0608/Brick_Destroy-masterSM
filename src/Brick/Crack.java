@@ -4,6 +4,11 @@ import java.awt.*;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Point2D;
 
+/**
+ * Created by a 189cm lengzaii, tingcc.
+ * @author tingcc
+ * @since 11/11/2021
+ */
 //crack class divided from abstract brick class for easier modifying and reading(21/11/2021)
 public class Crack {
 
@@ -24,7 +29,6 @@ public class Crack {
     private int crackDepth;
     private int steps;
 
-
     public Crack(Brick brick, int crackDepth, int steps) {
         this.brick = brick;
 
@@ -44,6 +48,10 @@ public class Crack {
         crack.reset();
     }
 
+    /**
+     * @param point also same as break point
+     * @param direction crack direction
+     */
     protected void makeCrack(Point2D point, int direction) {
         Rectangle bounds = brick.brickFace.getBounds();
 
@@ -116,6 +124,10 @@ public class Crack {
         crack.append(path, true);
     }
 
+    /**
+     * @param bound this one makes steel brick and hardcore brick works, since they need probability
+     * @return
+     */
     private int randomInBounds(int bound) {
         int n = (bound * 2) + 1;
         return Brick.rnd.nextInt(n) - bound;
