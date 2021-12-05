@@ -28,6 +28,11 @@ import Brick.*;
 import Config.*;
 
 
+/**
+ * Created by a 189cm lengzaii, tingcc.
+ * @author tingcc
+ * @since 11/11/2021
+ */
 public class GameBoard extends JComponent implements KeyListener,MouseListener,MouseMotionListener {
 
     private static final String CONTINUE = "Continue";
@@ -65,6 +70,14 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
 
     private String StrHighscore;
 
+    /**
+     * @param owner , owner is the GameFrame
+     * set menuFont and message Font here
+     * also need to initialize the game board
+     * run the timer for update within a specific delay
+     * show message in String format in middle(Brickcount, score, ballcount)
+     * also add a line below to show highscore
+     */
     public GameBoard(GameFrame owner){
         super();
         this.owner = owner;
@@ -85,12 +98,16 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
         gameTimer = new Timer(10,e ->{
             wallConfig.move();
             wallConfig.findImpacts();
+
+            //here is the message to show bricks remaining, score, and balls left(lives)
             message = String.format("Bricks: %d Score: %d Balls: %d", wallConfig.getBrickCount(), Brick.getScore() , wallConfig.getBallCount());
 
+            //here is the part to show highscore
             StrHighscore = String.format("HighScore: "+GetHighScore());
             score = Brick.getScore();
             highscore = this.GetHighScore();
 
+            //if ball end, which means ball count = 0, show Game Over and check initial score with highscore using CheckScore()
             if(wallConfig.isBallLost()){
                 if(wallConfig.ballEnd()){
                     wallConfig.wallReset();
@@ -102,6 +119,8 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
                 wallConfig.ballReset();
                 gameTimer.stop();
             }
+
+            //is Done means finish the level, set an if condition that will give bonus score multiplier if full health pass
             else if(wallConfig.isDone()) {
                 if (wallConfig.getBallCount() == 3) {
                     System.out.println("Bonus score multiplier due to no damage taken"); //reward
@@ -116,6 +135,7 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
                         wallConfig.nextLevel();
 
                     } else {
+                        // here is for no levels left
                         message = "ALL WALLS DESTROYED";
                         gameTimer.stop();
                         wallConfig.scoreReset();
@@ -128,6 +148,9 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
 
     }
 
+    /**
+     * GwtHighScore() is used to read the data store in text file to make comparison with initial score and highscore
+     */
     public String GetHighScore() {
         //format: hi : 100
         FileReader readFile;
@@ -151,6 +174,10 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
 
     }
 
+    /**
+     * CheckScore to make the if condition for score comparison
+     * It also call a message and input dialog which allow player who breaks the record write in their record
+     */
     public void CheckScore(){
         int intHighScore;
 
@@ -200,7 +227,9 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
     }
 
 
-
+    /**
+     * initialize the game board window
+     */
     private void initialize(){
         this.setPreferredSize(new Dimension(DEF_WIDTH,DEF_HEIGHT));
         this.setFocusable(true);
