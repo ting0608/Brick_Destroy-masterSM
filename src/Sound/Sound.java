@@ -28,6 +28,7 @@ public class Sound {
 
     /**
      * use try catch to set file and use clip to allow sound effect be play
+     * Use AudioSystem.getAudioInputStream(file) to get file
      */
     public class SoundEffect {
 
