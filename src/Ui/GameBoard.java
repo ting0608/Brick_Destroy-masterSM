@@ -149,7 +149,7 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
     }
 
     /**
-     * GwtHighScore() is used to read the data store in text file to make comparison with initial score and highscore
+     * GetHighScore() is used to read the data store in text file to make comparison with initial score and highscore
      */
     public String GetHighScore() {
         //format: hi : 100

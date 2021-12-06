@@ -27,7 +27,11 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowFocusListener;
 
 
-
+/**
+ * Created by a 189cm lengzaii, tingcc.
+ * @author tingcc
+ * @since 11/11/2021
+ */
 public class GameFrame extends JFrame implements WindowFocusListener {
 
     private static final String DEF_TITLE = "Tingcccc";
@@ -37,7 +41,6 @@ public class GameFrame extends JFrame implements WindowFocusListener {
 
     private boolean gaming;
     private Info Info;
-
 
     public GameFrame(){
         super();
@@ -59,6 +62,9 @@ public class GameFrame extends JFrame implements WindowFocusListener {
 
     }
 
+    /**
+     * initialize the window
+     */
     public void initialize(){
         this.setTitle(DEF_TITLE);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -67,6 +73,9 @@ public class GameFrame extends JFrame implements WindowFocusListener {
         this.setVisible(true);
     }
 
+    /**
+     * method to enable gameBoard
+     */
     public void enableGameBoard(){
         this.dispose();
         this.remove(homeMenu);
@@ -80,6 +89,10 @@ public class GameFrame extends JFrame implements WindowFocusListener {
     }
 
 
+    /**
+     * method ot enable homemenu
+     * use remove to ensure the relevant window been closed while homeMenu called
+     */
     public void enableHomeMenu(){
         this.dispose();
         this.remove(Info);
@@ -92,6 +105,10 @@ public class GameFrame extends JFrame implements WindowFocusListener {
 
     }
 
+    /**
+     * method ot enable info page
+     * use remove to ensure the relevant window been closed while info called
+     */
     public void enableInfo(){
         this.dispose();
         this.remove(homeMenu);

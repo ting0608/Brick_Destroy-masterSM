@@ -26,6 +26,11 @@ import java.awt.font.FontRenderContext;
 import java.awt.geom.Rectangle2D;
 
 
+/**
+ * Created by a 189cm lengzaii, tingcc.
+ * @author tingcc
+ * @since 11/11/2021
+ */
 public class HomeMenu extends JComponent implements MouseListener, MouseMotionListener {
 
     private static final String GREETINGS = "Welcome to";
@@ -61,9 +66,14 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
     private boolean startClicked;
     private boolean menuClicked;
     private boolean InfoClicked;
-    //JFrame frame = new JFrame();
+
     private Image background;
 
+    /**
+     * @param owner is the gameFrame
+     * @param area is the button dimension
+     * also set the button size and some font here
+     */
     public HomeMenu(GameFrame owner,Dimension area){
 
         this.setFocusable(true);
@@ -94,14 +104,18 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
     }
 
 
-
-
-
+    /**
+     * @param g is graphics, used to draw
+     */
     public void paint(Graphics g){
         drawMenu((Graphics2D)g);
     }
 
 
+    /**
+     * @param g2d graphics 2d
+     * here to drawMenu, also call drawText and DrawButton to finalize the menu page
+     */
     public void drawMenu(Graphics2D g2d){
 
         drawContainer(g2d);
@@ -129,6 +143,10 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
         g2d.setColor(prevColor);
     }
 
+    /**
+     * @param g2d
+     * drawBackground is used to get image in file and set it as background image
+     */
     private void drawBackground(Graphics2D g2d){
         background = Toolkit.getDefaultToolkit().getImage("Images/wall.png");
         g2d.drawImage(background,0,0, getWidth(), getHeight(),this);
@@ -147,10 +165,12 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
         g2d.setColor(BORDER_COLOR);
         g2d.draw(menuFace);
         g2d.setStroke(tmp);
-
-        //g2d.setColor(prev);
     }
 
+    /**
+     * @param g2d
+     * drawText used to draw out text, and those text font set in public class menu
+     */
     private void drawText(Graphics2D g2d){
 
         g2d.setColor(TEXT_COLOR);
@@ -184,6 +204,11 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
 
     }
 
+    /**
+     * @param g2d
+     * drawButton to draw all the start, info and exit button(in rectangle shape)
+     * x and y location of button also been set here
+     */
     private void drawButton(Graphics2D g2d){
 
         FontRenderContext frc = g2d.getFontRenderContext();
@@ -276,7 +301,10 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
     }
 
 
-
+    /**
+     * @param mouseEvent
+     * if mouse clicked those button(start, info and exit), do the relevant action
+     */
     @Override
     public void mouseClicked(MouseEvent mouseEvent) {
         Point p = mouseEvent.getPoint();
@@ -354,6 +382,10 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
 
     }
 
+    /**
+     * @param mouseEvent
+     * hand cursor used to make the cursor become hand when moved to clickable button
+     */
     @Override
     public void mouseMoved(MouseEvent mouseEvent) {
         Point p = mouseEvent.getPoint();
@@ -366,14 +398,9 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
     //make 2 separate methods to avoid repeating same method in mouse_pressed/mouse_released, and also allow user to modify easily(once)
     public void RepaintStart(){
         repaint(startButton.x,startButton.y,startButton.width+1,startButton.height+1);
-
     }
 
     public void RepaintInfo(){
-        repaint(InfoButton.x,InfoButton.y,InfoButton.width+1,InfoButton.height+1);
-    }
-
-    public void RepaintBoard(){
         repaint(InfoButton.x,InfoButton.y,InfoButton.width+1,InfoButton.height+1);
     }
 
