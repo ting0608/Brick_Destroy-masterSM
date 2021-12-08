@@ -14,7 +14,6 @@ import java.util.Random;
  * @since 11/11/2021
  */
 abstract public class Brick  {
-    public static final int MIN_CRACK = 1;
     public static final int DEF_CRACK_DEPTH = 1;
     public static final int DEF_STEPS = 35;
 
@@ -26,7 +25,7 @@ abstract public class Brick  {
     public static Random rnd;
     public static int Score = 0;
 
-    private String name;
+    private final String name;
     Shape brickFace;
 
     private Color border;
@@ -126,6 +125,8 @@ abstract public class Brick  {
         }
 
     }
+
+
 
     /**
      * @return score
