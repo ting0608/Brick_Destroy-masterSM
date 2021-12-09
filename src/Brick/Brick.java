@@ -57,7 +57,13 @@ abstract public class Brick  {
     }
 
 
+    /**
+     * @param pos position of rectangle/bricks
+     * @param size size of bricks/rectangle
+     * @return
+     */
     protected abstract Shape makeBrickFace(Point pos,Dimension size);
+
     public abstract Shape getBrick();
 
     /**
@@ -99,7 +105,7 @@ abstract public class Brick  {
 
     /**
      * boolean to know that whether is broken or not
-     * @return broken when confirm the is broken.
+     * @return broken when confirm that the brick is broken (broken = true).
      */
     public final boolean isBroken(){
         return broken;
@@ -129,7 +135,7 @@ abstract public class Brick  {
 
 
     /**
-     * @return score
+     * @return score is to different brick's score which get from gainscore
      * getScore() to return the final sum score
      */
     public static int getScore(){

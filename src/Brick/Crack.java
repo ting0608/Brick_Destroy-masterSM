@@ -125,7 +125,7 @@ public class Crack {
     }
 
     /**
-     * @param bound this one makes steel brick and hardcore brick works, since they need probability
+     * @param bound this one makes crack works, since they need probability
      * @return
      */
     private int randomInBounds(int bound) {
