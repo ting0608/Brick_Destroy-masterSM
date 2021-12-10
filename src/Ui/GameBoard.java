@@ -86,13 +86,13 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
 
         menuFont = new Font("Destroy",Font.PLAIN,TEXT_SIZE);
         messageFont = new Font("Monospaced",Font.BOLD,18);
-
+        //initialize the first level
         this.initialize();
         message = "";
         wallConfig = new wallConfig(new Rectangle(0,0,DEF_WIDTH,DEF_HEIGHT),30,3,6/2,new Point(300,430));
 
         debugConsole = new DebugConsole(owner, wallConfig,this);
-        //initialize the first level
+
         wallConfig.nextLevel();
 
         gameTimer = new Timer(10,e ->{
@@ -130,8 +130,8 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
                     if (wallConfig.hasLevel()) {
                         message = "Go to Next Level";
                         gameTimer.stop();
-                        //wallConfig.ballReset();
-                        wallConfig.wallReset();
+                        wallConfig.ballReset();
+                        //wallConfig.wallReset();
                         wallConfig.nextLevel();
 
                     } else {
@@ -272,6 +272,11 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
         g2d.setColor(tmp);
     }
 
+    /**
+     * @param Brick
+     * @param g2d
+     * this method use to draw bricks
+     */
     private void drawBrick(Brick Brick,Graphics2D g2d){
         Color tmp = g2d.getColor();
 
@@ -446,6 +451,7 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
         else if(restartButtonRect.contains(p)){
             message = "Restarting Game...";
             wallConfig.ballReset();
+
             wallConfig.wallReset();
             wallConfig.scoreReset();
             showPauseMenu = false;

@@ -223,8 +223,8 @@ public class wallConfig {
         else if(ball.getPosition().getY() > area.getY() + area.getHeight()){
             ballCount--;
             ballLost = true;
-            Brick.Score = Brick.Score-10;
-            System.out.println("Lol you noob, score-10"); //penalty
+            Brick.Score = Brick.Score-5;
+            System.out.println("Lol you noob, score-5"); //penalty
 
 
         }
@@ -296,6 +296,7 @@ public class wallConfig {
         ball.setSpeed(speedX,speedY);
         ballLost = false;
     }
+
 
     /**
      * wallReset means repaint the wall/level, which also reset the ball count, usually use this when player click restart
