@@ -55,29 +55,29 @@ After that, the highscore showing in the middle of game will be replaced.
 ---
 
 #Refactoring
-###<ins>1. Breaking packages</ins>
--Several packages have been reorganized for better and easier management.
+###<ins>1. Breaking packages</ins>  
+-Several packages have been reorganized for better and easier management.  
 For example, classes been divided into big packages call Brick, Config, Sound, User and Ui.   
 -This could help programmer to find and search the relevant classes easily.  
 
-###<ins>2. Basic maintenance</ins>
+###<ins>2. Basic maintenance</ins>  
 -Some classes have been renamed due to their non-meaningful naming. For example wall renamed into wallConfig, since that class not only contain methods for brick's wall.  
 
-###<ins>3. Methods breaking</ins>
+###<ins>3. Methods breaking</ins>  
 -Some 'God method' which mean those methods which are heavy and replicant have been divided into several spread methods.   
 -For example: repaint code appear several times for different button in HomeMenu, hence 3 different repaint been declare for each button's painting.  
 -Methods example RepaintStart(), RepaintInfo(), RepaintMenu(), draw() and etc
 
-###<ins>4. Moving classes</ins>
+###<ins>4. Moving classes</ins>  
 -Some inner classes been moved to upper classes.   
 -Example: Crack class refactor from brick class's inner class to upper class.  
 -Easier for future maintenance.
 
-###<ins>5. Meaningful junit test</ins>
+###<ins>5. Meaningful junit test</ins>  
 -Some junit test been build, mostly around bricks score and highscore.   
 -For example:Use assertEquals to ensure that score gain as expected when the bricks broken.
 
-###<ins>6. Removed unused import/resources</ins>
+###<ins>6. Removed unused import/resources</ins>  
 -Some libraries/import been removed due to their non-usage
 
 ---
