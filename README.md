@@ -22,7 +22,7 @@ gitlink: https://github.com/ting0608/COMP2042_CW_TingChungCheng
 -The homeMenu was redesign by putting new fonts, background image, border and etc.
 ![alt text](Images/homeMenu.png)
 ---
-
+ 
 ###Info Page
 -New pages/activity added to let player understand how the game works   
 -**Esc** key button could be pressed to return homeMenu.
