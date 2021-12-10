@@ -10,7 +10,8 @@ ALT+SHIFT+F1 open console
 The game automatically pause if the frame loses focus
 Enjoy :0
 ___
-###Version Control   
+
+### Version Control
 Github been used for commit and push.   
 gitlink: https://github.com/ting0608/COMP2042_CW_TingChungCheng
 
@@ -43,8 +44,7 @@ gitlink: https://github.com/ting0608/COMP2042_CW_TingChungCheng
 ###Pause Menu
 -Allow player could always press esc while still in game to pause. 
 It will show the pauseMenu which contains _continue, restart, home and exit_.  
--**Home** button added to return homeMenu.  
- 
+-**Home** button added to return homeMenu.
 ![alt text](Images/pauseMenu.png)
 ---
 
@@ -52,8 +52,8 @@ It will show the pauseMenu which contains _continue, restart, home and exit_.
 If player break the record and reach game over, the game will pop a dialog and ask player to fill in their name.
 After that, the highscore showing in the middle of game will be replaced.
 ![alt text](Images/highScore.png)
-
 ---
+
 #Refactoring
 ###<ins>1. Breaking packages</ins>
 -Several packages have been reorganized for better and easier management.
