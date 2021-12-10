@@ -16,7 +16,7 @@ Github been used for commit and push.
 gitlink: https://github.com/ting0608/COMP2042_CW_TingChungCheng
 
 ---
-#What Changed?
+#What Changed?  
 ###Home Menu  
 -3 buttons redesign on homeMenu, which is Start, Instruction and Exit.  
 -The homeMenu was redesign by putting new fonts, background image, border and etc.
