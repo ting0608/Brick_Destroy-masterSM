@@ -81,10 +81,11 @@ For example, classes been divided into big packages call Brick, Config, Sound, U
 -Some libraries/import been removed due to their non-usage
 
 ---
+
+
 #Rewards and penalty
 -Reward: if player pass level with full health(3 balls), score*2.  
 -Penalty: if player lose 1 ball, score-5.
-
 ---
 #Javadocs
 -Javadocs added for almost 80% of the classes(only those I feel necessary)  
