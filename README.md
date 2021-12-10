@@ -32,20 +32,22 @@ gitlink: https://github.com/ting0608/COMP2042_CW_TingChungCheng
 -After clicking Start button, it will lead player to gameBoard, which show up bricks, ball and player's bar.
 ![alt text](Images/gameBoard.png)
 ---
+
 ###Game Board (start game)
 -Player press space to start the game, the ball start bouncing off from the bar.   
 -More game details added, such as Bricks, Score, Balls, and Highscore.   
 -Sfx(sound effects) will be play when bricks broken.
 ![alt text](Images/startGame.png)
 ---
+
 ###Pause Menu
 -Allow player could always press esc while still in game to pause. 
 It will show the pauseMenu which contains _continue, restart, home and exit_.  
-
 -**Home** button added to return homeMenu.  
  
 ![alt text](Images/pauseMenu.png)
 ---
+
 ###HighScore
 If player break the record and reach game over, the game will pop a dialog and ask player to fill in their name.
 After that, the highscore showing in the middle of game will be replaced.
@@ -79,7 +81,6 @@ For example, classes been divided into big packages call Brick, Config, Sound, U
 -Some libraries/import been removed due to their non-usage
 
 ---
-
 #Rewards and penalty
 -Reward: if player pass level with full health(3 balls), score*2.  
 -Penalty: if player lose 1 ball, score-5.
