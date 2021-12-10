@@ -54,7 +54,8 @@ After that, the highscore showing in the middle of game will be replaced.
 ![alt text](Images/highScore.png)
 ---
 
-#Refactoring
+#Refactoring  
+
 <font size="5"><ins>1. Breaking packages</ins></font>  
 -Several packages have been reorganized for better and easier management.  
 For example, classes been divided into big packages call Brick, Config, Sound, User and Ui.   
