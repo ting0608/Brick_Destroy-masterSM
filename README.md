@@ -92,3 +92,9 @@ For example, classes been divided into big packages call Brick, Config, Sound, U
 #Javadocs  
 -Javadocs added for almost 80% of the classes(only those I feel necessary)  
 -Majority is about explaining what is this param and what those methods do.  
+---
+
+#Maven
+-maven tools added and pom.xml created   
+-jar executable file has been added and build as image shown  
+![alt text](Images/maven.png)
