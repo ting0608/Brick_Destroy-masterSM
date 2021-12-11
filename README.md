@@ -54,7 +54,7 @@ After that, the highscore showing in the middle of game will be replaced.
 ![alt text](Images/highScore.png)
 ---
 
-<font size="10">**Refactoring**</font>  
+#Refactoring
 
 <font size="5"><ins>1. Breaking packages</ins></font>  
 -Several packages have been reorganized for better and easier management.  
@@ -86,8 +86,9 @@ For example, classes been divided into big packages call Brick, Config, Sound, U
 
 #Rewards and penalty  
 -Reward: if player pass level with full health(3 balls), score*2.  
--Penalty: if player lose 1 ball, score-5.  
+-Penalty: if player lose 1 ball, score-2.  
 ---
+
 #Javadocs  
 -Javadocs added for almost 80% of the classes(only those I feel necessary)  
 -Majority is about explaining what is this param and what those methods do.  

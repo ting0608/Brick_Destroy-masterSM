@@ -9,14 +9,6 @@ import static org.junit.jupiter.api.Assertions.*;
 class ClayBrickTest {
 
     @Test
-    void makeBrickFace() {
-    }
-
-    @Test
-    void getBrick() {
-    }
-
-    @Test
     void setImpact() {
         ClayBrick clay = new ClayBrick(new Point(), new Dimension(0,0));
         clay.impact(1);

@@ -223,8 +223,8 @@ public class wallConfig {
         else if(ball.getPosition().getY() > area.getY() + area.getHeight()){
             ballCount--;
             ballLost = true;
-            Brick.Score = Brick.Score-5;
-            System.out.println("Lol you noob, score-5"); //penalty
+            Brick.Score = Brick.Score-2;
+            System.out.println("Lol you noob, score-2"); //penalty
 
 
         }
