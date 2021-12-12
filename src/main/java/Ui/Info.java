@@ -53,7 +53,7 @@ public class Info extends JComponent implements MouseListener, MouseMotionListen
      * which make the project slightly clean (not using tons of icons and images in ide then doing adjustment)
      */
     public void img(Graphics g) {
-        image1 = Toolkit.getDefaultToolkit().getImage("Images/infoback2.png");
+        image1 = Toolkit.getDefaultToolkit().getImage("src/main/resources/Images/infoback2.png");
         g.drawImage(image1, 0, 0, getWidth(), getHeight(), this);
 
     }

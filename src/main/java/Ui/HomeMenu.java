@@ -148,7 +148,7 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
      * drawBackground is used to get image in file and set it as background image
      */
     private void drawBackground(Graphics2D g2d){
-        background = Toolkit.getDefaultToolkit().getImage("Images/wall.png");
+        background = Toolkit.getDefaultToolkit().getImage("src/main/resources/Images/wall.png");
         g2d.drawImage(background,0,0, getWidth(), getHeight(),this);
     }
 
